@@ -2,6 +2,7 @@ package com.csi.controller;
 
 import com.csi.model.Employee;
 import com.csi.service.EmployeeServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class EmployeeController {
     @Autowired
     EmployeeServiceImpl employeeService;
@@ -17,6 +19,7 @@ public class EmployeeController {
     @PostMapping("/saveemployeedata")
     public Employee saveEmployeeData(@RequestBody Employee employee)
     {
+        log.info("Trying to save into db");
         return employeeService.saveEmployeeData(employee);
     }
 
